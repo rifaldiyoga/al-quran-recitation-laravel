@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGrupNgajiTable extends Migration
+class CreateDetailGroupNgajisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateGrupNgajiTable extends Migration
      */
     public function up()
     {
-        Schema::create('grup_ngaji', function (Blueprint $table) {
+        Schema::create('detail_group_ngajis', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('group_ngaji_id');
+            $table->integer('user_id');
+            $table->date('joined_at');
+            $table->string('role_type');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateGrupNgajiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grup_ngaji');
+        Schema::dropIfExists('detail_group_ngajis');
     }
 }
