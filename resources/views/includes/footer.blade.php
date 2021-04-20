@@ -1,9 +1,3 @@
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-        </div>
-    </div>
+<footer class="text-center p-4 mt-5">
+    © 2021, Ngaji Yuk!. All Rights Reserved. Powered by Kopi Tech Anget.
 </footer>
-<!-- End of Footer -->
