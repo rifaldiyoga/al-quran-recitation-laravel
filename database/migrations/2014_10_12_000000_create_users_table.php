@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->date('birth_date');
             $table->string('birth_place');
             $table->string('gender');
-            $table->string('user_type'); // role Santri, Ustadz/Ah,Admin
+            $table->string('user_type')->default('santri'); // role Santri, Ustadz/Ah,Admin
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
