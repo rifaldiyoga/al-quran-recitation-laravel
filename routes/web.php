@@ -26,6 +26,8 @@ Route::prefix('admin')
     ->group(function(){
         Route::get('/', 'DashboardController@index')
             ->name('dashboard');
+        
+        Route::resource('group-ngaji', 'GroupNgajisController');
     });
 
 Auth::routes();
