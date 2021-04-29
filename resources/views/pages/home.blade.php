@@ -46,13 +46,12 @@
             <div class="row align-items-center">
                 <div class="col-8 mx-auto">
                     <h1>
-                        Hadist Of The Day
+                        Surah Of The Day
                     </h1>
-                    <p>
-                        Rasulullah shallahu ‘alaihi wasallam bersabda, “Sebaik-baiknya ibadah umatku adalah membaca
-                        Al-Qur’an.”
-                    </p>
-                    <p>(HR. al-Baihaqi). </p>
+                    <blockquote>
+                        {{$rekomendasi['acak']['id']['teks']}}
+                    </blockquote>
+                    <p>({{ $rekomendasi['surat']['nama'] ." ".$rekomendasi['surat']['ayat']   }}) </p>
                 </div>
                 <div class="col-4">
                     <img src="frontend/images/doa.png" alt="">

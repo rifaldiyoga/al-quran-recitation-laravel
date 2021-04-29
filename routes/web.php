@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/surah', 'SurahController@index')->name('surah');
+Route::get('/surah/{id}', 'SurahController@showDetail')->name('detail-surah');
 
 
 

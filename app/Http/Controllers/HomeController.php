@@ -8,6 +8,12 @@ class HomeController extends Controller
 {
     //
     public function index(Request $request){
-        return view('pages.home');
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', 'https://api.banghasan.com/quran/format/json/acak');
+        
+        $data = json_decode((string) $response->getBody()->getContents(), true);
+        return view('pages.home', [
+            'rekomendasi'=>$data
+        ]);
     }
 }

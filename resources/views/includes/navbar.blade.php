@@ -8,8 +8,8 @@
 
     <div class="collapse navbar-collapse" id="navb">
         <ul class="navbar-nav ms-auto mr-3">
-            <li class="nav-item mx-md-2 me-6"><a href="" class="nav-link active">Dashboard</a></li>
-            <li class="nav-item mx-md-2"><a href="" class="nav-link">Quran</a></li>
+            <li class="nav-item mx-md-2 me-6"><a href="{{ route('home') }}" class="nav-link active">Dashboard</a></li>
+            <li class="nav-item mx-md-2"><a href="{{ route('surah') }}" class="nav-link">Quran</a></li>
             <li class="nav-item mx-md-2"><a href="" class="nav-link">Grup Ngaji</a></li>
             @guest
             <!-- Mobile Button -->
