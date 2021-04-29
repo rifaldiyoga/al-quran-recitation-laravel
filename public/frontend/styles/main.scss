@@ -115,7 +115,7 @@ section {
     img {
         height: 300px;
         border: 3px black;
-        scale: initial;
+        object-fit: cover;
     }
 
     h1 {

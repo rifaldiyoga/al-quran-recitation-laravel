@@ -51,7 +51,7 @@
                     <blockquote>
                         {{$rekomendasi['acak']['id']['teks']}}
                     </blockquote>
-                    <p>({{ $rekomendasi['surat']['nama'] ." ".$rekomendasi['surat']['ayat']   }}) </p>
+                    <p>({{ $rekomendasi['surat']['nama'] ." : ".$rekomendasi['surat']['ayat']   }}) </p>
                 </div>
                 <div class="col-4">
                     <img src="frontend/images/doa.png" alt="">
