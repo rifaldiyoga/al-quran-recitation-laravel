@@ -1,60 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a href="#" class="navbar-brand">
-        <img src="frontend/images/logo.png" alt="">
-    </a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navb">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!--====== HEADER PART START ======-->
+<div class="navbar-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="{{ url('frontend/images/logo.svg') }}" alt="Logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
 
-    <div class="collapse navbar-collapse" id="navb">
-        <ul class="navbar-nav ms-auto mr-3">
-            <li class="nav-item mx-md-2 me-6"><a href="{{ route('home') }}" class="nav-link active">Dashboard</a></li>
-            <li class="nav-item mx-md-2"><a href="{{ route('surah') }}" class="nav-link">Quran</a></li>
-            <li class="nav-item mx-md-2"><a href="" class="nav-link">Grup Ngaji</a></li>
-            @guest
-            <!-- Mobile Button -->
-            <from class="from-inline d-sm-block d-md-none">
-            
-                <button class="btn btn-login my-2 my-sm-0 px-4" type="button" onclick="event.preventDefault(); location.href='{{url('login')}}';">
-                    Masuk
-                </button>
-            </from>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                        <ul id="nav" class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="page-scroll" href="#home">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="page-scroll" href="#features">Quran</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="page-scroll" href="#about">Grup Ngaji</a>
+                            </li>
+                        </ul>
+                    </div> <!-- navbar collapse -->
+                    
+                    <div class="navbar-btn d-none d-sm-inline-block">
+                        <a class="main-btn" data-scroll-nav="0" href="#pricing">Masuk</a>
+                    </div>
+                </nav> <!-- navbar -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div> <!-- navbar area -->
 
-            <!-- Desktop button -->
 
-            <from class="from-inline my-2 my-lg-0 d-none d-md-block">
-            
-                <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" type="button" onclick="event.preventDefault(); location.href='{{url('login')}}';">
-                    Masuk
-                </button>
-            </from>
-
-            <from class="from-inline my-2 my-lg-0 d-none d-md-block">
-                <button class="btn btn-navbar-right btn-register my-2 my-sm-0 px-4">
-                    Daftar
-                </button>
-            </from>
-            @endguest
-
-            @auth
-            <from class="from-inline d-sm-block d-md-none" action="{{ url('logout')}}" method="POST">
-                @csrf
-                <button class="btn btn-login my-2 my-sm-0 px-4" type="button" onclick="event.preventDefault(); location.href='{{url('login')}}';">
-                    Keluar
-                </button>
-            </from>
-
-            <!-- Desktop button -->
-
-            <from class="from-inline my-2 my-lg-0 d-none d-md-block" action="{{ url('logout')}}" method="POST">
-            @csrf
-                <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" type="button" onclick="event.preventDefault(); location.href='{{url('login')}}';">
-                    Keluar
-                </button>
-            </from>
-            @endauth
-
-            
-        </ul>
-    </div>
-</nav>
+<!--====== HEADER PART ENDS ======-->

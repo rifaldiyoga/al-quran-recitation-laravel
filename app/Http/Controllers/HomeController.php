@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GroupNgaji;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,8 +13,11 @@ class HomeController extends Controller
         $response = $client->request('GET', 'https://api.banghasan.com/quran/format/json/acak');
         
         $data = json_decode((string) $response->getBody()->getContents(), true);
+
+        $groupData = GroupNgaji::limit(3)->get();
         return view('pages.home', [
-            'rekomendasi'=>$data
+            'rekomendasi'=>$data,
+            'grup'=>$groupData
         ]);
     }
 }
