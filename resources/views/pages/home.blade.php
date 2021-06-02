@@ -16,7 +16,10 @@
                     <div class="header-hero-content text-center">
                         <h3 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Ngaji Yuk!</h3>
                         <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s"> Mari kita tingkatkan kesadaran untuk membaca Al-Quran</h2>
-                        <a href="#" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Daftar</a>
+                        @guest
+                            
+                        <a href="{{ url('register') }}" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Daftar</a>
+                        @endguest
                     </div> <!-- header hero content -->
                 </div>
             </div> <!-- row -->
@@ -126,7 +129,6 @@
                 </div> <!-- single testimonial -->
             </div>
             @endforeach
-            
        
         </div> <!-- row -->
     </div> <!-- container -->

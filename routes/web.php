@@ -14,13 +14,30 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/surah', 'SurahController@index')->name('surah');
-Route::get('/surah/{id}', 'SurahController@showDetail')->name('detail-surah');
+//frontend
+
+Route::get('/', 'HomeController@index')
+    ->name('home');
+Route::get('/surah', 'SurahController@index')
+    ->name('surah');
+Route::get('/surah/{id}', 'SurahController@showDetail')
+    ->name('surah.detail');
+Route::post('/surah/bookmark', 'SurahController@saveLastRead')
+    ->name('surah.bookmark')->middleware('auth');
+// Route::get('/grup-ngaji', 'GrupController@index')
+//     ->name('grup.index')
+//     ->middleware('auth');
+// Route::get('/grup-ngaji/create', 'GrupController@create')
+//     ->name('grup.create')
+//     ->middleware('auth');
+
+Route::get('/grup/{slug}', 'GrupController@detail')->middleware('auth')->name('grup.detail');
+Route::resource('grup', 'GrupController')->middleware('auth');
+
+// Route::get('/surah/{id}/{id}', 'SurahController@saveLastRead')->name('last-read');
 
 
-
-//admin/
+//admin
 
 Route::prefix('admin')
     ->namespace('Admin')

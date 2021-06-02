@@ -34,6 +34,7 @@ body {
   font-family: "Lato", sans-serif;
   font-weight: normal;
   font-style: normal;
+  background-color: #fdfdfd;
   color: #6A6972;
   overflow-x: hidden; }
 
@@ -497,6 +498,7 @@ p {
   top: 0;
   left: 0;
   width: 100%;
+  background-color: #fff;
   z-index: 99;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
@@ -604,7 +606,7 @@ p {
   .navbar-nav .nav-item a {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    color: #2E2E2E;
     -webkit-transition: all 0.3s ease-out 0s;
     -moz-transition: all 0.3s ease-out 0s;
     -ms-transition: all 0.3s ease-out 0s;
@@ -1520,3 +1522,275 @@ p {
   display: none; }
   .back-to-top:hover {
     color: #fff; }
+
+
+
+/*===========================
+     08.Surah css 
+===========================*/
+.single-surah {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(167, 167, 167, 0.16);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(167, 167, 167, 0.16);
+  box-shadow: 0px 0px 10px 0px rgba(167, 167, 167, 0.16);
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 20px 30px 20px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  margin: 10px 0;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s; }
+  @media (max-width: 767px) {
+    .single-surah {
+      padding: 20px 20px 5px;
+    } }
+  .single-surah .surah-review .quota i {
+    font-size: 32px;
+    color: #119BD2;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -ms-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; }
+  .single-surah .surah-review .star ul li {
+    display: inline-block;
+    font-size: 16px;
+    color: #FE806D; }
+  .single-surah .surah-text {
+    margin-top: 25px; }
+  .single-surah .surah-author { }
+    .single-surah .surah-author .author-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+      .single-surah .surah-author .author-image .author {
+        position: absolute;
+        flex: 0 0 120px;
+        border-radius: 50%;
+        width: 80px;
+        font-size: 25px;
+        font-weight: bold;
+        object-fit: cover;
+        height: 80px; }
+    .single-surah .surah-author .author-content .holder-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2E2E2E; }
+    .single-surah .surah-author .author-content .text {
+      font-size: 15px; 
+    }
+  .single-surah:hover {
+    border-color: #FE7A7B; }
+    .single-surah:hover .surah-review .quota i {
+      color: #FE7A7B; }
+
+.slick-center .single-surah {
+  border-color: #FE7A7B; }
+  .slick-center .single-surah .surah-review .quota i {
+    color: #FE7A7B; }
+
+.surah-active .slick-dots {
+  margin: 0 auto; }
+  .surah-active .slick-dots li {
+    display: inline-block;
+    margin: 0 4px; }
+    .surah-active .slick-dots li button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #fe8464 0%, #fe6e9a 100%);
+      border: 0;
+      font-size: 0;
+      opacity: 0.5;
+      -webkit-transition: all 0.3s ease-out 0s;
+      -moz-transition: all 0.3s ease-out 0s;
+      -ms-transition: all 0.3s ease-out 0s;
+      -o-transition: all 0.3s ease-out 0s;
+      transition: all 0.3s ease-out 0s; }
+    .surah-active .slick-dots li.slick-active button {
+      opacity: 1;
+      width: 15px;
+      height: 15px; }
+      @font-face {
+        font-family: Ayat;
+        src: url(../fonts/lpmq.otf);
+      }
+
+/*===========================
+     08.Ayat css 
+===========================*/
+.single-ayat {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(167, 167, 167, 0.16);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(167, 167, 167, 0.16);
+  box-shadow: 0px 0px 10px 0px rgba(167, 167, 167, 0.16);
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 20px 30px 20px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  margin: 10px 0;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s; }
+  @media (max-width: 767px) {
+    .single-ayat {
+      padding: 20px 20px 5px;
+    } }
+  .single-ayat .ayat {
+    font-weight: bold;
+    line-height: 70px;
+    font-size: 30px;
+  }
+  .single-ayat .translate {
+    font-size: 20px;
+    
+    font-family: "Ayat";
+  }
+  .single-ayat .translation {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .single-ayat .tafsir {
+    font-size: 20px;
+  }
+  .single-ayat a {
+    color: #6A6972;
+  }
+
+  
+
+
+
+.ayat-quran {
+  font-family: "Ayat";
+}
+
+.surah-title{
+  font-size: 24px;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+.last-read {
+  display: inline-block;
+  font-weight: 500;
+  white-space: nowrap;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 25px;
+  font-size: 16px;
+  line-height: 48px;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 8px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  z-index: 5;
+  -webkit-transition: all 0.4s ease-out 0s;
+  -moz-transition: all 0.4s ease-out 0s;
+  -ms-transition: all 0.4s ease-out 0s;
+  -o-transition: all 0.4s ease-out 0s;
+  transition: all 0.4s ease-out 0s;
+  background: -webkit-linear-gradient(left, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
+  background: -o-linear-gradient(left, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
+  background: linear-gradient(to right, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
+  background-size: 200%; }
+  .main-btn:hover {
+    color: #fff;
+    background-position: right center; }
+  .last-read h3 {
+    color: #fff;
+  }
+  .last-read h6 {
+    color: #fff;
+    margin-top: 40px;
+  }
+  .last-read .quran-img {
+    max-height: 150px;
+    display:block;
+    margin:auto;
+  }
+
+
+
+
+  .last-read-btn {
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 0px 20px;
+    font-size: 16px;
+    line-height: 48px;
+    border-radius: 8px;
+    border: 0;
+    background-color: #fff;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-transition: all 0.4s ease-out 0s;
+    -moz-transition: all 0.4s ease-out 0s;
+    -ms-transition: all 0.4s ease-out 0s;
+    -o-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
+
+    background-size: 200%; }
+    .last-read-btn:hover {
+      color: #119bd2;
+      background-position: right center; }
+    .last-read-btn a {
+      background: -webkit-linear-gradient(left, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
+      background: -o-linear-gradient(left, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
+      background: linear-gradient(to right, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
+      -webkit-background-clip: text;
+      font-weight: bold;
+	    -webkit-text-fill-color: transparent;
+    }
+
+.detail-grup {
+
+}
+  .detail-grup .img-banner{
+    width: 100%;
+    max-height: 400px;
+  }
+  .detail-grup .img-banner img{
+    width: 100%;
+    max-height: 400px;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+    object-fit: none;
+  }
+  .layer {
+    /* background-color: rgba(248, 247, 216, 0.7); */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.red {
+  outline: 100px solid rgba(255, 0, 0, 0.5) !important;
+  outline-offset: -100px;
+  overflow: hidden;
+  position: relative;
+  -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff), color-stop(0.5, #fff), color-stop(0.5, #66cc00)) 21 30 30 21 repeat repeat;
+  height: 200px;
+  width: 100%;
+}

@@ -1,6 +1,6 @@
 <!--====== FOOTER PART START ======-->
 
-<footer id="footer" class="footer-area pt-120">
+<footer id="footer" class="footer-area">
     <div class="container">
         <div class="footer-widget pb-100">
             <div class="row">
@@ -26,7 +26,7 @@
                 <div class="col-lg-12">
                     <div class="copyright d-sm-flex justify-content-between">
                         <div class="copyright-content">
-                            <p class="text">Designed and Developed by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
+                            <p class="text">copyright-content</a></p>
                         </div> <!-- copyright content -->
                     </div> <!-- copyright -->
                 </div>

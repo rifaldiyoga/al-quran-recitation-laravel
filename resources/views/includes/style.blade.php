@@ -1,4 +1,6 @@
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <!--====== Animate CSS ======-->
 <link rel="stylesheet" href="{{ url('frontend/css/animate.css') }}">
         
@@ -22,6 +24,7 @@
 
 <!--====== Style CSS ======-->
 <link rel="stylesheet" href="{{ url('frontend/css/style.css') }}">
+
 
 
 
