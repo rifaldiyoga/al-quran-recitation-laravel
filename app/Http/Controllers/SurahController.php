@@ -6,6 +6,8 @@ use App\ReadingProgress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\isEmpty;
+
 class SurahController extends Controller
 {
     //
@@ -21,11 +23,10 @@ class SurahController extends Controller
             ->limit(1)->get();
         }
         
-        
         $data = json_decode((string) $response->getBody()->getContents(), true);
         return view('pages.quran.surah',[
             'items' => $data['data'],
-            'lastRead'=> Auth::check() ?  $lastReadData[0] : []
+            'lastRead'=> Auth::check() && !$lastReadData->isEmpty() ?  $lastReadData[0] : []
         ]);
     }
 

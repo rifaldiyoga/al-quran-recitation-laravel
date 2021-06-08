@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Ngaji Yuk! - '.$items['name']['transliteration']['id'])
+@section('title', $items['name']['transliteration']['id'])
 
 @section('content')
 <main class="container mt-100">

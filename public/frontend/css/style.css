@@ -612,7 +612,7 @@ p {
     -ms-transition: all 0.3s ease-out 0s;
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
-    padding: 10px 0;
+    padding: 10px;
     position: relative;
     font-family: "Poppins", sans-serif; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -757,6 +757,17 @@ p {
 
 .sticky .navbar-nav .nav-item.active > a, .sticky .navbar-nav .nav-item:hover > a {
   color: #361CC1; }
+
+.dropdown-item {
+  font-size: 16px !important;
+}
+
+.dropdown-menu {
+  min-width: 15rem !important;
+  border-radius: 8px !important;
+  border-color: transparent;
+}
+
 
 /*===== HEADER HERO =====*/
 .header-hero {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Ngaji Yuk!')
+@section('title', 'Surah')
 
 @section('content')
 <main class="container-fluid mt-100" >
@@ -17,19 +17,18 @@
     <div class="row">
         <div class="col-md-9">
             @auth
-                
             <div class="last-read">
                 <div class="row">
                     <div class="col-md-8">
                         <h3>Quran Completion</h3>
-                        <h6 class="mt-10">Last Read {{ $lastRead->surah." ".$lastRead->ayat }}</h6>
+                        <h6 class="mt-10">{{ empty($lastRead) ? "Start Your Read" :  "Last Read ". $lastRead->surah." ".$lastRead->ayat }} </h6>
                         <div class="w3-light-gray w3-round-xlarge mt-15">
                             <div class="w3-white w3-round-xlarge " style="height:24px;width:75%"></div>
                         </div>
                     </div>
                     <div class="col-md-1">
                         <div class="last-read-btn mb-10" style="bottom: 0px; position: absolute;">
-                            <a href="{{ route('surah.detail', "1") }}">Lanjutkan ></a>
+                            <a href="{{ route('surah.detail', empty($lastRead) ? '1' : $lastRead->surah_id) }}">Lanjutkan ></a>
                         </div>
                     </div>
                     <div class="col-md-3">

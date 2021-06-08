@@ -107,7 +107,7 @@ class GrupController extends Controller
         $items = GroupNgaji::where('slug', $slug)->get();
 
         return view('pages.grup.detail', [
-            'data' => $items[0]
+            'data' => !$items->isEmpty() ? $items[0]: []
         ]);
     }
 

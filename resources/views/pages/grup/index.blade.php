@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Grup Ngaji')
 
 @section('content')
     <div class="container-fluid mt-100">

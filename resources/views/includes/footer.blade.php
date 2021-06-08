@@ -26,7 +26,7 @@
                 <div class="col-lg-12">
                     <div class="copyright d-sm-flex justify-content-between">
                         <div class="copyright-content">
-                            <p class="text">copyright-content</a></p>
+                            <p class="text">© 2021. Ngaji Yuk!. All Rights Reserved</a></p>
                         </div> <!-- copyright content -->
                     </div> <!-- copyright -->
                 </div>

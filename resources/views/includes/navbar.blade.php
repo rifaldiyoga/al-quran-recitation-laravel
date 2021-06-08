@@ -36,25 +36,31 @@
                         <!-- Sidebar Toggle (Topbar) -->
                         <form action="{{ url('logout') }}" method="post">
                             @csrf
-                            <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->first_name}}</span>
-                                    <img class="img-profile rounded-circle"
-                                        src="{{url('backend/img/undraw_profile.svg')}}">
-                                </a>
-                                <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                    aria-labelledby="userDropdown">
-                                    <button>Logout</button>
-                                </div>
-                            </li>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item dropdown no-arrow">
+                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->last_name}}</span>
+                                        <img class="img-profile rounded-circle"
+                                            src="{{url('backend/img/undraw_profile.svg')}}" style="max-width: 30px;">
+                                    </a>
+                                    <!-- Dropdown - User Information -->
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                        aria-labelledby="userDropdown"> 
+                                        <button class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" href="#">
+                                            <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Kemajuan Ngaji
+                                        </button>
+                                        <button class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" href="{{ route('logout') }}">
+                                            <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Logout
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                            
                         </form>
-                        
-
-                        <div class="navbar-btn d-none d-sm-inline-block">
-                            <img src="{{ url('frontend/images/person.jpg') }}" alt="..." class="rounded-circle border" style="height: 50px; ">
-                        </div>
+                    
                     @endauth
                     
                 </nav> <!-- navbar -->

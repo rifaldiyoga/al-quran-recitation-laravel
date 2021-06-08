@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', $data->group_name)
 
 @section('content')
     <div class="container mt-100">
