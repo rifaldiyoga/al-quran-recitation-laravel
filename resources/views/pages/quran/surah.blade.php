@@ -42,7 +42,7 @@
             <div class="row">
                 @foreach ($items as $data)
                 <div class="col-lg-4">
-                    <div class="single-surah">
+                    <div class="single-surah" onclick="location.href='{{ route('surah.detail', $data['number']) }}'" style="cursor: pointer">
                         <div class="row">
                             <div class="col-md-3 aligin-items-center surah-author">
                                 <div class="author-image">

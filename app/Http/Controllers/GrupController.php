@@ -17,11 +17,13 @@ class GrupController extends Controller
     public function index()
     {
         //
-        $groupData = GroupNgaji::limit(3)->get();
-        $myGroupData = GroupNgaji::where('created_by', Auth::user()->id)->get();
+        $groupRecomData = GroupNgaji::limit(3)->get();
+        $groupNewestData = GroupNgaji::orderByDesc('created_at')->limit(10)->get();
+        $groupUsersData = GroupNgaji::where('created_by', Auth::user()->id)->get();
         return view('pages.grup.index', [
-            'grupRekomendasi'=>$groupData,
-            'myGrupData'=>$myGroupData
+            'grupRekomendasi'=>$groupRecomData,
+            'grupTerbaru'=>$groupNewestData,
+            'myGrupData'=>$groupUsersData
         ]);
     }
 

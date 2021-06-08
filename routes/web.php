@@ -28,19 +28,16 @@ Route::get('/surah/{id}', 'SurahController@showDetail')
 Route::post('/surah/bookmark', 'SurahController@saveLastRead')
     ->name('surah.bookmark')->middleware('auth');
 
-
-    // Route::get('/grup-ngaji', 'GrupController@index')
-//     ->name('grup.index')
-//     ->middleware('auth');
-// Route::get('/grup-ngaji/create', 'GrupController@create')
-//     ->name('grup.create')
-//     ->middleware('auth');
+//grup
 
 Route::get('/grup/detail/{slug}', 'GrupController@detail')->middleware('auth')->name('grup.detail');
 Route::resource('grup', 'GrupController')->middleware('auth');
 
 // Route::get('/surah/{id}/{id}', 'SurahController@saveLastRead')->name('last-read');
 
+//kemajuan belajar
+Route::get('/kemajuan-belajar', 'KemajuanBelajarController@index')
+    ->name('kemajuan-belajar')->middleware('auth');
 
 //admin
 

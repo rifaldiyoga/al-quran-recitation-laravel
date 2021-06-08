@@ -47,14 +47,14 @@
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                         aria-labelledby="userDropdown"> 
-                                        <button class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" href="#">
+                                        <a class="dropdown-item" href="{{ route('kemajuan-belajar') }}">
                                             <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            Kemajuan Ngaji
-                                        </button>
-                                        <button class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" href="{{ route('logout') }}">
+                                            Riwayat Membaca
+                                        </a>
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" onclick="$(this).closest('form').submit()">
                                             <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Logout
-                                        </button>
+                                        </a>
                                     </div>
                                 </li>
                             </ul>
