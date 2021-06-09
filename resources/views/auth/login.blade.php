@@ -7,9 +7,12 @@
     <nav class="navbar navbar-expand-lg navbar-light py-3">
         <div class="container">
             <!-- Navbar Brand -->
-            <a href="#" class="navbar-brand">
-                <img src="https://res.cloudinary.com/mhmd/image/upload/v1571398888/Group_1514_tjekh3_zkts1c.svg"
-                    alt="logo" width="150px">
+            <a href="{{ url('/') }}" class="navbar-brand">
+                <h3 style="background: linear-gradient(to right, #5433c8 0%, #119bd2 50%, #33c8c1 100%);
+                                background-clip: border-box;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        ">Ngaji Yuk!</h3>
             </a>
         </div>
     </nav>
@@ -17,13 +20,12 @@
 
 
 <div class="container">
-    <div class="row py-5 mt-4 align-items-center">
+    <div class="row py-5 mt-4 align-items-center" style="min-height: 70vh">
         <!-- For Demo Purpose -->
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img src="{{ url('logins/images/banner.jpg') }}" alt="" class="img-fluid mb-3 d-none d-md-block">
-            <h1 class="text-center">Sign In</h1>
-            <p class="font-italic text-muted mb-0">Create a minimal registeration page using Bootstrap 4 HTML form
-                elements.</p>
+            <h1 class="text-center mb-2">Sign In</h1>
+            <p class="font-italic text-center mb-0">Mari membuat generasi indonesia cinta Al-Quran!</p>
 
         </div>
 
@@ -31,14 +33,14 @@
         <div class="col-md-7 col-lg-6 mx-auto">
 
             @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $item)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $item)
                     <li> {{ $errors }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="row">

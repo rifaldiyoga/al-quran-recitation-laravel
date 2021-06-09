@@ -7,9 +7,12 @@
     <nav class="navbar navbar-expand-lg navbar-light py-3">
         <div class="container">
             <!-- Navbar Brand -->
-            <a href="#" class="navbar-brand">
-                <img src="https://res.cloudinary.com/mhmd/image/upload/v1571398888/Group_1514_tjekh3_zkts1c.svg"
-                    alt="logo" width="150px">
+            <a href="{{ url('/') }}" class="navbar-brand">
+                <h3 style="background: linear-gradient(to right, #5433c8 0%, #119bd2 50%, #33c8c1 100%);
+                                background-clip: border-box;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        ">Ngaji Yuk!</h3>
             </a>
         </div>
     </nav>
@@ -22,9 +25,8 @@
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img src="{{ url('logins/images/banner.jpg') }}" alt=""
                 class="img-fluid mb-3 d-none d-md-block">
-            <h1>Create an Account</h1>
-            <p class="font-italic text-muted mb-0">Create a minimal registeration page using Bootstrap 4 HTML form
-                elements.</p>
+            <h1 class="text-center mb-2">Buat Akun Kamu</h1>
+            <p class="font-italic text-center mb-0">Mari membuat generasi indonesia cinta Al-Quran!</p>
             
         </div>
 

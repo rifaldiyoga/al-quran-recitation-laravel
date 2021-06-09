@@ -11,7 +11,7 @@
                     <div class="single-ayat">
                         <h3>{{ $data->group_name }}</h3>
                         <p>{{ $data->group_type }}</p>
-                        <p><i class="fa fa-eye"></i> Grup {{ $data->access_type }}, 20 Anggota   </p>
+                        <p><i class="fa fa-eye"></i> Grup {{ $data->access_type }}, {{ Helper::countMember($data->id) }} Anggota   </p>
                     </div> 
                 </div>
                 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GroupMember;
 use Illuminate\Http\Request;
 use App\GroupNgaji;
 use Illuminate\Support\Facades\Auth;
@@ -47,14 +48,22 @@ class GrupController extends Controller
     public function store(Request $request)
     {
         //
-        $data = $request->all();
+        $data = $request->except(['_token']);
         $data['img_src'] = $request->file('img_src')->store(
             'assets/grup_photo', 'public'
         );
         $data['created_by'] = Auth::user()->id;
         $data['slug'] = Str::slug($request->group_name).rand(1, 999999);
 
-        GroupNgaji::create($data);
+        $group_id = GroupNgaji::insertGetId($data);
+
+        $group['group_ngaji_id'] = $group_id;
+        $group['user_id'] = Auth::user()->id;
+        $group['joined_at'] = now();
+        $group['role_type'] = 'admin';
+        
+        GroupMember::create($group);
+
         return redirect()->route('grup.index');
     }
 

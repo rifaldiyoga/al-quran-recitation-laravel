@@ -28,25 +28,7 @@
     <div class="single-ayat">  
         
         <?php
-function arabic_w2e($str)
-{
-    $arabic_eastern = array('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩');
-    $arabic_western = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-    return str_replace($arabic_western, $arabic_eastern, $str);
-}
 
-/**
- * Converts numbers from eastern to western Arabic numerals.
- *
- * @param  string $str Arbitrary text
- * @return string Text with eastern Arabic numerals converted into western Arabic numerals.
- */
-function arabic_e2w($str)
-{
-    $arabic_eastern = array('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩');
-    $arabic_western = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-    return str_replace($arabic_eastern, $arabic_western, $str);
-}
 ?>
         @foreach ($items['verses'] as $data)
         <?php
@@ -63,7 +45,7 @@ function arabic_e2w($str)
                                     {{ $data['number']['inSurah'].', '.$tes.', '.$items['number'] }}
                                     )" style="color:#aeaeaa; cursor: pointer;"></a>
                         <a class="fa fa-play fa-lg ml-10" onclick="play({{ $data['number']['inSurah'] }})" style="color:#aeaeaa; cursor: pointer;"></a>
-                        <p class=" ayat text-right float-right ayat-quran mt-20" style="text-align: right; font-size : 30px">{{ $data['text']['arab']." - ".arabic_w2e($data['number']['inSurah']) }}</p>
+                        <p class=" ayat text-right float-right ayat-quran mt-20" style="text-align: right; font-size : 30px">{{ $data['text']['arab']." - ".Helper::arabic_w2e($data['number']['inSurah']) }}</p>
                     </div>
                     <div class="col-md-12 mt-15">
                         <b class="mb-3 translation">{{ strtoupper($data['text']['transliteration']['en']) }}</b>

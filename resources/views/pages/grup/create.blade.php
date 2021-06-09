@@ -24,7 +24,7 @@
             <form action="{{ route('grup.store') }}" method="POST" enctype="multipart/form-data"> 
                 @csrf
                 <div class="form-group">
-                    <label for="group_name">Nama Group</label>
+                    <label for="group_name">Nama Grup Ngaji</label>
                     <input type="text" class="form-control" name="group_name" placeholder="Nama Grup" value="{{ old('group_name') }}"/>
                 </div>
 
@@ -33,7 +33,9 @@
                     <label for="group_type">Tipe Grup</label>
                     <select name="group_type" id="group_type" class="form-control">
                         <option value="1">Grup Ngaji Bareng</option>
-                        <option value="2">Grup Ngaji Bareng Ustadz</option>
+                        @if (Auth::user()->user_type == '1')
+                            <option value="2">Grup Ngaji Bareng Ustadz</option>
+                        @endif
                     </select>
                 </div>
 

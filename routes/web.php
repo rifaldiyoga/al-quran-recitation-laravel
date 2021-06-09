@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')
     ->name('home');
 
+    Route::get('/dashboard', 'DashboardController@index')
+    ->name('dashboard');
+
 //Surah
 
 Route::get('/surah', 'SurahController@index')

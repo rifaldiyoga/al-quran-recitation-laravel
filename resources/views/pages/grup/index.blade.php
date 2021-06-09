@@ -35,7 +35,6 @@
             <div class="single-ayat">
                 <div class="row">
                     <div class="col">
-
                         <h3>Saran Grup</h3>
                         <div class="row " data-wow-duration="1s" data-wow-delay="0.8s">
                             @foreach ($grupRekomendasi as $item)
@@ -48,8 +47,8 @@
     
                                     </div>
                                     <div class="grup-content">
-                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ $item->group_name }}</a></h5>
-                                        <p class="text">20 Anggota</p>
+                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ Helper::limitChar($item->group_name, 20)  }}</a></h5>
+                                        <p class="text">{{ Helper::countMember($item->id) }} Anggota</p>
                                     </div>
                                 </div>
                             </div>
@@ -75,8 +74,8 @@
     
                                     </div>
                                     <div class="grup-content">
-                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ $item->group_name }}</a></h5>
-                                        <p class="text">20 Anggota</p>
+                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ Helper::limitChar($item->group_name, 16) }}</a></h5>
+                                        <p class="text">{{ Helper::countMember($item->id) }} Anggota</p>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +95,7 @@
             </div>
 
             <div class="single-ayat">
-                <h5 class="mb-3">Jadwal Yang Akan Datang</h5>
+                <h5 class="text-center mb-3">Jadwal Yang Akan Datang</h5>
                 @foreach ($myGrupData as $item)
                 <div class="row p-2">
                     <a href="{{ route('grup.detail', $item->slug) }}">{{ $item->group_name }}</a>

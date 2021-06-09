@@ -14,7 +14,8 @@
         "guzzle/guzzle": "~3.0",
         "guzzlehttp/guzzle": "^7.3",
         "laravel/framework": "^6.20",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "stevebauman/location": "^6.1"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",
@@ -38,6 +39,9 @@
         "psr-4": {
             "App\\": "app/"
         },
+        "files": [
+            "app/Helper/helpers.php"
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"
