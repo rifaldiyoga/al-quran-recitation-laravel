@@ -15,7 +15,8 @@
         "guzzlehttp/guzzle": "^7.3",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
-        "stevebauman/location": "^6.1"
+        "stevebauman/location": "^6.1",
+        "ttskch/select2-bootstrap4-theme": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",

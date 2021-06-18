@@ -741,14 +741,15 @@ p {
     font-weight: bold;
     position: relative;
 }
+.navbar-nav .nav-item .active {
+    color: #361CC1;
+}
 
 .navbar-nav .nav-item :hover {
-  color: #007BFF;
+  color: #361CC1;
 }
 
-.active {
-  color: #007BFF !important;
-}
+
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .navbar-nav .nav-item {
@@ -968,8 +969,7 @@ p {
     color: #2E2E2E;
 }
 
-.sticky .navbar-nav .nav-item.active>a,
-.sticky .navbar-nav .nav-item:hover>a {
+.sticky .navbar-nav .nav-item.active>a {
     color: #361CC1;
 }
 

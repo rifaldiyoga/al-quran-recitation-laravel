@@ -44,7 +44,7 @@
             <div class="single-ayat">
                 <h5 class="text-center mb-3">Jadwal Sholat di Surabaya</h5>
                 <?php 
-                    $sholat = ['subuh', 'dhuha', 'dzuhur', 'ashar', 'maghrib', 'isya'];
+                    $sholat = ['Imsak', 'Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
                 ?>
                 <div class="container">
                     @foreach ($sholat as $item)
@@ -53,7 +53,8 @@
                             <p> {{ ucfirst($item) }} </p> 
                         </div>
                         <div class="col">
-                            <p> {{ $jadwalSholat['jadwal']['data'][$item] }} </p> 
+                            <?php ?>
+                            <p> {{ $jadwalSholat['results']['datetime'][0]['times'][$item] }} </p> 
                         </div>
                     </div>
                     @endforeach

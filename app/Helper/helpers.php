@@ -2,9 +2,15 @@
 namespace App\Helper;
 
 use App\GroupMember;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class Helper
 {
+
+    const NGAJI_BARENG = 2;
+    const NGAJI_BARENG_USTADZ = 1;
 
     public function __construct()
     {
@@ -34,6 +40,24 @@ class Helper
 
     public static function limitChar($string, $limit){
         return strlen($string) > $limit ? substr($string, 0, $limit - 3).'...' : $string; 
-    }    
+    }
+    
+    public static function getGroupType($type){
+        return strlen($type) == 1 ? 'Grup Ngaji Bareng Ustadz' : 'Grup Ngaji Bareng'; 
+    }
+
+    public static function checkRoleInGrup($group_id){
+        $data = GroupMember::selectRaw('*')->where('group_ngaji_id', $group_id)->where('user_id', Auth::user()->id)->get();
+        return $data[0]->role_type;
+    }
+
+
+    public static function getName($user_id){
+        $data = User::where('id', $user_id)->get();
+        return $data[0]->first_name;
+    }
+
+
+
 
 }

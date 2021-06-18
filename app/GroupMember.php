@@ -14,4 +14,5 @@ class GroupMember extends Model
         'group_ngaji_id', 'user_id', 'joined_at', 
         'role_type'
     ];
+
 }

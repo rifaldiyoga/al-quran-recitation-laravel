@@ -19,6 +19,9 @@
 <script src="{{ url('frontend/js/waypoints.min.js') }}"></script>
 <script src="{{ url('frontend/js/jquery.counterup.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+
 <!--====== Magnific Popup js ======-->
 <script src="{{ url('frontend/js/jquery.magnific-popup.min.js') }}"></script>
 
@@ -34,3 +37,4 @@
 
 <!--====== Main js ======-->
 <script src="{{ url('frontend/js/main.js') }}"></script>
+

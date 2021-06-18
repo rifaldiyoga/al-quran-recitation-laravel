@@ -107,7 +107,7 @@
         </div> <!-- row -->
         <div class="row wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.8s">
             @foreach ($grup as $item)
-            <div class="col-lg-4">
+            <div class="col-lg-4 d-flex">
                 <div class="single-testimonial">
                     <div class="testimonial-review d-flex align-items-center justify-content-between">
                         <div class="quota">
@@ -125,7 +125,7 @@
                         </div>
                         <div class="author-content media-body">
                             <h6 class="holder-name">{{ $item->group_name }}</h6>
-                            <p class="text">CEO, SpaceX</p>
+                            <p class="text">{{ Helper::countMember($item->id) }} Anggota</p>
                         </div>
                     </div>
                 </div> <!-- single testimonial -->

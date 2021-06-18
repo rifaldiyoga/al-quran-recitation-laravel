@@ -20,7 +20,7 @@ class DashboardController extends Controller
         }
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://api.banghasan.com/sholat/format/json/jadwal/kota/770/tanggal/'.now()->format('Y-m-d'));
+        $response = $client->request('GET', 'https://api.pray.zone/v2/times/day.json?city=surabaya&date='.now()->format('Y-m-d'));
         
         $data = json_decode((string) $response->getBody()->getContents(), true);
 

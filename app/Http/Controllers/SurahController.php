@@ -32,11 +32,14 @@ class SurahController extends Controller
 
     public function showDetail($id){
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://api.quran.sutanlab.id/surah/'.$id);
+        $responseSurah = $client->request('GET', 'https://api.quran.sutanlab.id/surah/'.$id);
+        $responseListSurah = $client->request('GET', 'https://api.quran.sutanlab.id/surah');
         
-        $data = json_decode((string) $response->getBody()->getContents(), true);
+        $dataSurah = json_decode((string) $responseSurah->getBody()->getContents(), true);
+        $dataListSurah = json_decode((string) $responseListSurah->getBody()->getContents(), true);
         return view('pages.quran.detail-surah',[
-            'items' => $data['data']
+            'items' => $dataSurah['data'],
+            'listSurah' => $dataListSurah['data']
         ]);
     }
 

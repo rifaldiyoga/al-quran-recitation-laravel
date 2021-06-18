@@ -33,7 +33,11 @@ Route::post('/surah/bookmark', 'SurahController@saveLastRead')
 
 //grup
 
+Route::get('/grup/detail/{slug}/list', 'GrupController@listMember')->middleware('auth')->name('grup.listMember');
 Route::get('/grup/detail/{slug}', 'GrupController@detail')->middleware('auth')->name('grup.detail');
+Route::get('/grup/detail/{slug}/setor', 'GrupController@setorCreate')->middleware('auth')->name('grup.setorCreate');
+Route::post('/grup/detail/{slug}/setor', 'GrupController@setorStore')->middleware('auth')->name('grup.setorStore');
+Route::post('/grup/{slug}', 'GrupController@join')->middleware('auth')->name('grup.join');
 Route::resource('grup', 'GrupController')->middleware('auth');
 
 // Route::get('/surah/{id}/{id}', 'SurahController@saveLastRead')->name('last-read');
