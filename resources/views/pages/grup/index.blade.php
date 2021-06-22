@@ -18,24 +18,47 @@
                 </div>
                 @else
                     @foreach ($myGrupData as $item)
-                    <div class="row p-2">
-                        <a href="{{ route('grup.detail', $item->slug) }}">{{ $item->group_name }}</a>
+                    <div class="row mt-3 mb-3">
+                        <div class="">
+                            <img src="{{Storage::url($item->img_src) }}" alt="" class="rounded-circle"
+                                style="height:50px; width:50px;">
+
+                        </div>
+                        <div class="col d-flex ml-2 my-auto">
+                            <a href="{{ route('grup.detail', $item->slug) }}">{{ $item->group_name }}</a>
+                        </div>
                     </div>
                     @endforeach
                 @endif
 
                 <hr>
-                <a href="{{ route('grup.create') }}" class="last-read-btn" style="width: 100%"><i
-                        class="fa fa-plus text-left"></i> Buat Grup</a>
-
-
+                <div class="row mt-3">
+                    <div class="last-read-btn col">
+                        <a href="{{ route('grup.create') }}" class=""> <i
+                            class="fa fa-plus text-left"></i> Buat Grup</i></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-7">
             <div class="single-ayat">
                 <div class="row">
                     <div class="col">
+                        <div class="row">
+                            <div class="col d-flex my-auto">
+
                         <h3>Saran Grup</h3>
+                            </div>
+                            <div class="col">
+                                <div class="subscribe-form">
+                                    <form action="#">
+                                        <input type="text" placeholder="Masukkan nama grup">
+                                        <button class="main-btn">Cari</button>
+                                    </form>
+                                </div>
+                    
+                            </div>
+                        </div>
                         <div class="row " data-wow-duration="1s" data-wow-delay="0.8s">
                             @foreach ($grupRekomendasi as $item)
                             <div class="col-md-4" onclick="location.href='{{ route('grup.detail', $item->slug) }}'">
@@ -87,26 +110,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="subscribe-form">
-                <form action="#">
-                    <input type="text" placeholder="Contoh Grup">
-                    <button class="main-btn">Cari</button>
-                </form>
-            </div>
-
-            <div class="single-ayat">
-                <h5 class="text-center mb-3">Jadwal Yang Akan Datang</h5>
-                @foreach ($myGrupData as $item)
-                <div class="row p-2">
-                    <a href="{{ route('grup.detail', $item->slug) }}">{{ $item->group_name }}</a>
-                </div>
-                @endforeach
-                <hr>
-                <a href="{{ route('grup.create') }}" class="last-read-btn" style="width: 100%"><i
-                        class="fa fa-plus text-left"></i> Buat Grup</a>
-
-
-            </div>
+            
         </div>
     </div>
 </div>

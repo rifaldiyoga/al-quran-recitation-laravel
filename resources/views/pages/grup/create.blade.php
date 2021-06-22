@@ -39,13 +39,14 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="access_type">Tipe Akses Grup</label>
                     <select name="access_type" id="access_type" class="form-control">
                         <option value="Public"><i class="fa fa-public"></i> Public</option>
                         <option value="Private"><i class="fa fa-lock"></i>Private</option>
                     </select>
-                </div>
+                </div> --}}
+                <input type="text" name="access_type" id="access_type" value="Public" hidden>
 
                 <div class="form-group">
                     <label for="img_src">Logo Grup</label>

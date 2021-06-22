@@ -46,15 +46,19 @@ class Helper
         return strlen($type) == 1 ? 'Grup Ngaji Bareng Ustadz' : 'Grup Ngaji Bareng'; 
     }
 
-    public static function checkRoleInGrup($group_id){
-        $data = GroupMember::selectRaw('*')->where('group_ngaji_id', $group_id)->where('user_id', Auth::user()->id)->get();
-        return $data[0]->role_type;
+    public static function checkRoleInGrup($group_id, $user_id){
+        $data = GroupMember::selectRaw('*')->where('group_ngaji_id', $group_id)->where('user_id', $user_id)->get()->first();
+        return $data->role_type;
     }
 
 
     public static function getName($user_id){
         $data = User::where('id', $user_id)->get();
         return $data[0]->first_name;
+    }
+
+    public static function getTitle($gender) {
+        return $gender == 'L' ? 'Ustadz' : 'Ustadzah';
     }
 
 

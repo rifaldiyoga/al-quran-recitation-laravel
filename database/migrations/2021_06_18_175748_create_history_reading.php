@@ -13,7 +13,7 @@ class CreateHistoryReading extends Migration
      */
     public function up()
     {
-        Schema::create('history_reading', function (Blueprint $table) {
+        Schema::create('recitation_progres', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('first_surah_id');
             $table->string('first_surah');
@@ -22,6 +22,7 @@ class CreateHistoryReading extends Migration
             $table->string('last_surah');
             $table->integer('last_ayat');
             $table->integer('group_ngaji_id');
+            $table->integer('mentor_id');
             $table->string('status');
             $table->integer('checked_by')->nullable();
             $table->dateTime('checked_date')->nullable();

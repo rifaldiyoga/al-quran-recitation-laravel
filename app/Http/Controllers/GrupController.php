@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\GroupMember;
 use Illuminate\Http\Request;
 use App\GroupNgaji;
-use App\HistoryReading;
+use App\RecitationProgres;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+
 
 class GrupController extends Controller
 {
@@ -50,6 +52,7 @@ class GrupController extends Controller
     {
         //
         $data = $request->except(['_token']);
+
         $data['img_src'] = $request->file('img_src')->store(
             'assets/grup_photo', 'public'
         );
@@ -116,29 +119,31 @@ class GrupController extends Controller
     public function detail(Request $request, $slug)
     {
         
-        $items = GroupNgaji::where('slug', $slug)->get();
-        $anggotaGrup =  !$items->isEmpty() ? 
-            GroupMember::join('users', 'users.id', 'detail_group_ngajis.user_id')->where('group_ngaji_id', $items[0]->id)->limit('5')->get()
-            : [];
-        $isJoined = GroupMember::join('users', 'users.id', 'detail_group_ngajis.user_id')->where('group_ngaji_id', $items[0]->id)->where('users.id', Auth::user()->id)->get();
+        $items = GroupNgaji::where('slug', $slug)->get()->first();
+        $anggotaGrup = 
+            GroupMember::join('users', 'users.id', 'detail_group_ngajis.user_id')->where('group_ngaji_id', $items->id)->limit('5')->get();
+        $isJoined = GroupMember::join('users', 'users.id', 'detail_group_ngajis.user_id')->where('group_ngaji_id', $items->id)->where('users.id', Auth::user()->id)->get();
 
-        $recentActivity = HistoryReading::where('group_ngaji_id', $items[0]->id)->orderByDesc('created_at')->limit(10)->get();
-
+        $recentActivity = RecitationProgres::where('group_ngaji_id', $items->id)->orderByDesc('created_at')->limit(10)->get();
+        $yourRecentActivity = RecitationProgres::where('group_ngaji_id', $items->id)->where('created_by', Auth::user()->id)->orderByDesc('created_at')->limit(3)->get();
+        $lastRecitation = RecitationProgres::where('group_ngaji_id', $items->id)->where('created_by', Auth::user()->id)->orderByDesc('created_at')->get()->first();
         return view('pages.grup.detail', [
-            'data' => !$items->isEmpty() ? $items[0]: [],
+            'data' =>  $items,
             'listMember' => $anggotaGrup,
             'isJoined' => $isJoined,
-            'recentActivity' => $recentActivity
+            'recentActivity' => $recentActivity,
+            'yourRecentActivity' => $yourRecentActivity,
+            'lastRecitation' => $lastRecitation
         ]);
     }
 
     public function listMember(Request $request, $slug){
-        $items = GroupNgaji::where('slug', $slug)->get();
-        $anggotaGrup = !$items->isEmpty() ? 
-            GroupMember::join('users', 'users.id', 'detail_group_ngajis.user_id')->where('group_ngaji_id', $items[0]->id)->limit('5')->get()
-            : [];
+        $items = GroupNgaji::where('slug', $slug)->get()->first();
+        $anggotaGrup = 
+            GroupMember::selectRaw('detail_group_ngajis.*, users.first_name, users.last_name')->join('users', 'users.id', 'detail_group_ngajis.user_id')->where('group_ngaji_id', $items->id)->orderBy('role_type')->get();
         return view('pages.grup.list-member', [
-            'listMember' => !$anggotaGrup->isEmpty() ? $anggotaGrup : []
+            'data' => $items,
+            'listMember' => $anggotaGrup
         ]);
     }
 
@@ -157,12 +162,19 @@ class GrupController extends Controller
     public function setorCreate(Request $request, $slug){
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', 'https://api.quran.sutanlab.id/surah');
-        $items = GroupNgaji::where('slug', $slug)->get();
+        $items = GroupNgaji::where('slug', $slug)->get()->first();
+        $mentor = User::selectRaw('users.*')->join('detail_group_ngajis', 'detail_group_ngajis.user_id', 'users.id')
+                        ->join('group_ngajis', 'group_ngajis.id', 'detail_group_ngajis.group_ngaji_id')
+                        ->where('detail_group_ngajis.role_type', 'admin')->where('group_ngajis.slug', $slug)->get();
+        
+        $lastRecitation = RecitationProgres::where('group_ngaji_id', $items->id)->where('created_by', Auth::user()->id)->where('status', 'Approved')->orderByDesc('created_at')->get()->first();
         $data = json_decode((string) $response->getBody()->getContents(), true);
 
         return view('pages.grup.setor' , [
-            'data' => !$items->isEmpty() ? $items[0]: [],
-            'listQuran' => $data['data']
+            'data' => $items,
+            'listQuran' => $data['data'],
+            'mentorList' => $mentor,
+            'lastRecitation' => $lastRecitation
         ]);
     }
 
@@ -175,14 +187,44 @@ class GrupController extends Controller
         $setor['last_surah_id'] = $request->lsurah_id;
         $setor['last_surah'] = $request->last_surah;
         $setor['last_ayat'] = $request->last_ayat;
+        $setor['mentor_id'] = $request->mentor_id;
         $setor['created_by'] = Auth::user()->id;
         $setor['status'] = 'Waiting';
         $setor['group_ngaji_id'] = $items[0]->id;
 
 
-        HistoryReading::create($setor);
+        RecitationProgres::create($setor);
 
         return redirect()->route('grup.detail', $slug);
+
+    }
+
+    public function inviteMember(Request $request, $slug){
+
+        $user = User::where('email', $request->email)->get()->first();
+
+        $items = GroupNgaji::where('slug', $slug)->get()->first();
+        $group['group_ngaji_id'] = $items->id;
+        $group['user_id'] = $user->id;
+        $group['joined_at'] = now();
+        $group['role_type'] = 'member';
+        
+        GroupMember::create($group);
+
+        return redirect()->route('grup.detail', $slug);
+
+    }
+
+
+    public function updateRole(Request $request, $slug){
+
+        $member = GroupMember::find($request->id);
+        $member->role_type = $request->role_type;
+
+        $member->save();
+    
+
+        return "success";
 
     }
 

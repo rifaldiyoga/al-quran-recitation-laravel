@@ -29,6 +29,15 @@
                             <li class="nav-item">
                                 <a class="page-scroll {{ Str::contains(Request::route()->getName(), 'grup') ? 'active' : ''  }}" href="{{ route('grup.index') }}">Grup Ngaji</a>
                             </li>
+                            @auth
+                            @if (Auth::user()->user_type == '1')
+                                
+                            <li class="nav-item">
+                                <a class="page-scroll {{ Str::contains(Request::route()->getName(), 'setoran-bacaan') ? 'active' : ''  }}" href="{{ route('setoran.index') }}">Setoran Bacaan</a>
+                            </li>
+                            @endif
+                            @endauth
+                            
                         </ul>
                     </div> <!-- navbar collapse -->
                     @guest
@@ -41,11 +50,11 @@
                         <!-- Sidebar Toggle (Topbar) -->
                         <form action="{{ url('logout') }}" method="post">
                             @csrf
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item dropdown no-arrow">
+                            <ul class="navbar-btn">
+                                <li class="nav-item dropdown no-arrow d-none d-sm-inline-block">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="mr-2 d-none d-lg-inline text-gray-600">{{Auth::user()->last_name}}</span>
+                                        <span class="mr-2 d-none d-lg-inline text-gray-600">Halo, {{Auth::user()->last_name}}</span>
                                         <img class="img-profile rounded-circle"
                                             src="{{url('backend/img/undraw_profile.svg')}}" style="max-width: 30px;">
                                     </a>
@@ -54,7 +63,7 @@
                                         aria-labelledby="userDropdown"> 
                                         <a class="dropdown-item" href="{{ route('kemajuan-belajar') }}">
                                             <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            Riwayat Membaca
+                                            Progres Bacaan
                                         </a>
                                         <a class="dropdown-item" href="#" onclick="$(this).closest('form').submit()">
                                             <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>

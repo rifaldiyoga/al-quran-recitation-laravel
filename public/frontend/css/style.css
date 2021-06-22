@@ -673,7 +673,7 @@ p {
 .navbar-toggler .toggler-icon {
     width: 30px;
     height: 2px;
-    background-color: #fff;
+    background-color: black;
     display: block;
     margin: 5px 0;
     position: relative;
@@ -2487,3 +2487,15 @@ p {
 .dropdown-toggle::after{
   display: none !important;
 }
+
+.post-title .title{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.post-title .subtitle{
+    font-size: 15px;
+}
+
+
+

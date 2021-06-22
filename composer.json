@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^7.3",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
+        "laravelcollective/html": "^6.2",
         "stevebauman/location": "^6.1",
         "ttskch/select2-bootstrap4-theme": "^1.5"
     },

@@ -31,6 +31,10 @@
                         <div class="row">
                             <div class="col">
                                 <div class="custom-control custom-switch text-right">
+                                    <input type="checkbox" class="custom-control-input" id="autoPlay" checked>
+                                    <label class="custom-control-label" for="autoPlay">Auto Play Ayat</label>
+                                </div>
+                                <div class="custom-control custom-switch text-right">
                                     <input type="checkbox" class="custom-control-input" id="showTafsir" checked>
                                     <label class="custom-control-label" for="showTafsir">Menampilkan Tafsir Ayat</label>
                                 </div>
@@ -166,7 +170,10 @@
             
             var surah_id = endedTag.substring(4, endedTag.length);
             $('#button'+surah_id).removeClass().addClass("fa fa-play fa-lg ml-10");
-            play(parseInt(surah_id) + 1);
+            
+            if($('#autoPlay').is(':checked')){
+                play(parseInt(surah_id) + 1);
+            }
 
         });
 

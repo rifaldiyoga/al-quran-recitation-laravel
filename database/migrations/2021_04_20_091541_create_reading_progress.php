@@ -20,7 +20,7 @@ class CreateReadingProgress extends Migration
             $table->integer('ayat');
             $table->string('ref_type'); //input grup atau user
             $table->integer('ref_id'); // id user atau grup
-            $table->integer('group_id');// diisi jika reftype = grup untuk refrensi ke grup mana
+            $table->integer('group_id')->default(0);// diisi jika reftype = grup untuk refrensi ke grup mana
             $table->timestamps();
         });
     }

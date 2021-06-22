@@ -34,10 +34,12 @@ Route::post('/surah/bookmark', 'SurahController@saveLastRead')
 //grup
 
 Route::get('/grup/detail/{slug}/list', 'GrupController@listMember')->middleware('auth')->name('grup.listMember');
+Route::post('/grup/detail/{slug}/list', 'GrupController@updateRole')->middleware('auth')->name('grup.updateRole');
 Route::get('/grup/detail/{slug}', 'GrupController@detail')->middleware('auth')->name('grup.detail');
 Route::get('/grup/detail/{slug}/setor', 'GrupController@setorCreate')->middleware('auth')->name('grup.setorCreate');
 Route::post('/grup/detail/{slug}/setor', 'GrupController@setorStore')->middleware('auth')->name('grup.setorStore');
 Route::post('/grup/{slug}', 'GrupController@join')->middleware('auth')->name('grup.join');
+Route::post('/grup/invite/{slug}', 'GrupController@inviteMember')->middleware('auth')->name('grup.inviteMember');
 Route::resource('grup', 'GrupController')->middleware('auth');
 
 // Route::get('/surah/{id}/{id}', 'SurahController@saveLastRead')->name('last-read');
@@ -45,6 +47,16 @@ Route::resource('grup', 'GrupController')->middleware('auth');
 //kemajuan belajar
 Route::get('/kemajuan-belajar', 'KemajuanBelajarController@index')
     ->name('kemajuan-belajar')->middleware('auth');
+    Route::get('/kemajuan-belajar/{slug}', 'KemajuanBelajarController@progresGrup')
+    ->name('kemajuan-belajar.grup')->middleware('auth');
+
+//setoran
+Route::get('/setoran-bacaan', 'SetoranBacaanController@index')
+    ->name('setoran.index')->middleware('auth');
+Route::get('/setoran-bacaan/search', 'SetoranBacaanController@search')
+    ->name('setoran.search')->middleware('auth');
+Route::post('/setoran-bacaan', 'SetoranBacaanController@updateStatus')
+    ->name('setoran.status')->middleware('auth');
 
 //admin
 

@@ -14,19 +14,29 @@ class SurahController extends Controller
     public function index(Request $request){
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', 'https://api.quran.sutanlab.id/surah');
+        
         $lastReadData = [];
-
+        $surahResponse = [];
+        $dataSurah = [];
         if(Auth::check()){
             $lastReadData = ReadingProgress::where('ref_id', Auth::user()->id)
             ->where('ref_type','user')
             ->orderBy('id', 'desc')
-            ->limit(1)->get();
+            ->limit(1)->get()->first();
+
+            if(!is_null($lastReadData)){
+                $surahResponse = $client->request('GET', 'https://api.quran.sutanlab.id/surah/'.$lastReadData->surah_id);
+                $dataSurah = json_decode((string) $surahResponse->getBody()->getContents(), true);
+            }
+            
         }
         
         $data = json_decode((string) $response->getBody()->getContents(), true);
+        
         return view('pages.quran.surah',[
             'items' => $data['data'],
-            'lastRead'=> Auth::check() && !$lastReadData->isEmpty() ?  $lastReadData[0] : []
+            'surah' => !empty($dataSurah) ? $dataSurah['data'] : [],
+            'lastRead'=> Auth::check() ?  $lastReadData : []
         ]);
     }
 
@@ -44,12 +54,11 @@ class SurahController extends Controller
     }
 
     public function saveLastRead(Request $request){
-        if($request->ajax())
-        {
-            
+        if($request->ajax()){
             $data = array(
                 'surah' => $request->surah,
                 'surah_id' => $request->surah_id,
+                'group_id' => 0,
                 'ayat' => $request->ayat,
                 'ref_type' => 'user',
                 'ref_id' => Auth::user()->id,
