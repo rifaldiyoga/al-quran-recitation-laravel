@@ -20,7 +20,8 @@
                         <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s"> Mari kita tingkatkan kesadaran untuk membaca Al-Quran</h2>
                         @guest
                             
-                        <a href="{{ url('register') }}" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Daftar</a>
+                            <a class="main-btn" data-scroll-nav="0" href="{{ route('login') }}">Masuk</a>
+                        
                         @endguest
                     </div> <!-- header hero content -->
                 </div>
@@ -97,7 +98,7 @@
 <section id="testimonial" class="testimonial-area pt-120">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-5">
+            <div class="col-md-5">
                 <div class="section-title text-center pb-40">
                     <div class="line m-auto"></div>
                     <h3 class="title">Gabung Grup Ngaji
@@ -107,8 +108,8 @@
         </div> <!-- row -->
         <div class="row wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.8s">
             @foreach ($grup as $item)
-            <div class="col-lg-4 d-flex">
-                <div class="single-testimonial">
+            <div class="col-md-4" >
+                <div class="single-testimonial" style="min-height: 0px !important">
                     <div class="testimonial-review d-flex align-items-center justify-content-between">
                         <div class="quota">
                             <i class="lni-quotation"></i>
@@ -125,7 +126,7 @@
                         </div>
                         <div class="author-content media-body">
                             <h6 class="holder-name">{{ $item->group_name }}</h6>
-                            <p class="text">{{ Helper::countMember($item->id) }} Anggota</p>
+                            <p class="text">{{ Helpers::countMember($item->id) }} Anggota</p>
                         </div>
                     </div>
                 </div> <!-- single testimonial -->

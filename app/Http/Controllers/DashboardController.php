@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $response = $client->request('GET', 'https://api.pray.zone/v2/times/day.json?city=surabaya&date='.now()->format('Y-m-d'));
         $responseAyat = $client->request('GET', 'https://api.banghasan.com/quran/format/json/acak');
         $groupUsersData = GroupNgaji::selectRaw('group_ngajis.id')->join('detail_group_ngajis', 'detail_group_ngajis.group_ngaji_id', 'group_ngajis.id')->where('detail_group_ngajis.user_id', Auth::user()->id)->get();
-        $recentActivity = RecitationProgres::selectRaw('recitation_progres.*, group_ngajis.group_name')->join('group_ngajis', 'group_ngajis.id', 'recitation_progres.group_ngaji_id')->whereIn('group_ngaji_id', $groupUsersData)->orderByDesc('recitation_progres.created_at')->limit(10)->get();
+        $recentActivity = RecitationProgres::selectRaw('recitation_progres.*, group_ngajis.group_name')->join('group_ngajis', 'group_ngajis.id', 'recitation_progres.group_ngaji_id')->whereIn('group_ngaji_id', $groupUsersData)->orderByDesc('recitation_progres.created_at')->limit(5)->get();
         
         $dataquran = json_decode((string) $responseAyat->getBody()->getContents(), true);        
         $data = json_decode((string) $response->getBody()->getContents(), true);

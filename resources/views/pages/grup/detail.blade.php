@@ -14,9 +14,9 @@
                         <div class="col-md-6">
 
                             <h3 class="mb-2">{{ $data->group_name }}</h3>
-                            <p class="mb-2">{{ Helper::getGroupType($data->group_type) }}</p>
+                            <p class="mb-2">{{ Helpers::getGroupType($data->group_type) }}</p>
                             <p><i class="fa fa-eye"></i> Grup {{ $data->access_type }},
-                                {{ Helper::countMember($data->id) }} Anggota </p>
+                                {{ Helpers::countMember($data->id) }} Anggota </p>
                         </div>
                         <div class="col-md-6 x-flex y-flex">
 
@@ -27,7 +27,7 @@
                                 <button class="btn btn-info float-right float-bottom" type="submit">Gabung Grup</button>
                             </form>
                             @else
-                            @if (Helper::checkRoleInGrup($data->id, Auth::user()->id) != 'admin')
+                            @if (Helpers::checkRoleInGrup($data->id, Auth::user()->id) != 'admin')
                             <form action="" method="post">
                                 @csrf
                                 <input type="number" name="id" id="id" hidden>
@@ -56,8 +56,8 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8">
+    <div class="row flex-column-reverse flex-lg-row">
+        <div class="col-md-12 col-lg-6 col-xl-8">
 
             <h5>Aktivitas Terkini</h5>
             @if (!$recentActivity->isEmpty())
@@ -68,8 +68,8 @@
                         style="height:50px;">
 
                     <div class="ml-3 col">
-                        <p class="title">{{ Helper::getName($item->created_by) }}
-                            {{-- <p class="subtitle text-capitalize">{{ Helper::checkRoleInGrup($data->id, $item->created_by) }}
+                        <p class="title">{{ Helpers::getName($item->created_by) }}
+                            {{-- <p class="subtitle text-capitalize">{{ Helpers::checkRoleInGrup($data->id, $item->created_by) }}
                         </p> --}}
                         </p>
                         <p class="subtitle">{{ $item->created_at->diffForHumans() }}</p>
@@ -97,8 +97,8 @@
             @endif
 
         </div>
-        <div class="col">
-            @if (!$isJoined->isEmpty() && Helper::checkRoleInGrup($data->id, Auth::user()->id) == 'admin')
+        <div class="col-md-12 col-lg-6 col-xl-4">
+            @if (!$isJoined->isEmpty() && Helpers::checkRoleInGrup($data->id, Auth::user()->id) == 'admin')
             <div class="single-ayat">
                 Beberapa setoran bacaan belum di nilai!
                 <div class="row mt-3">
@@ -110,7 +110,7 @@
             </div>
             @endif
 
-            @if (!$isJoined->isEmpty() && Helper::checkRoleInGrup($data->id, Auth::user()->id) == 'member')
+            @if (!$isJoined->isEmpty() && Helpers::checkRoleInGrup($data->id, Auth::user()->id) == 'member')
             <div class="single-ayat">
                 <h5>Riwayat Bacaan Kamu</h5>
                 

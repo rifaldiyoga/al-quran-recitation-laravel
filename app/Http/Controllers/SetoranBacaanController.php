@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use App\Mail\RecitationProgresMail;
 use App\GroupMember;
 use App\RecitationProgres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\GroupNgaji;
+use App\User;
 
 class SetoranBacaanController extends Controller
 {
@@ -107,10 +110,21 @@ class SetoranBacaanController extends Controller
     }
 
     public function updateStatus(Request $request){
-        var_dump($request->all());
+
         $progress = RecitationProgres::find($request->id);
         $progress->status = $request->status;
+        
         $progress->save();
+
+        $santri = User::where('id', $progress->created_by)->first();
+
+        //kirim email
+
+
+
+        Mail::to($santri->email)->send(
+            new RecitationProgresMail($progress, $santri)
+        );
 
         return 'success';
     }

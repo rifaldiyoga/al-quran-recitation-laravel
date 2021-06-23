@@ -11,10 +11,10 @@
                 
                 <form action="{{ route('setoran.search') }}" method="get">
                 <div class="row justify-content-end">
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-2">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Input nama" value="{{ old('name') }}">
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-2">
                         <select name="group_id" id="group_id" class="form-control" aria-placeholder="Berdasarkan Grup">
                             <option disabled selected value> -- select an option -- </option>
                             @foreach ($groupList as $item)
@@ -24,20 +24,23 @@
                         </select>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-2">
                         <select name="status" id="status" class="form-control">
                             <option value="Waiting">Waiting</option>
                             <option value="All">All</option>
                             <option value="Approved">Approved</option>
                             <option value="Rejected">Rejected</option>
                         </select>
+                        
                     </div>
+                    <div class="col-md-1">
 
-                    <button class="btn btn-info" type="submit"><i class="fa fa-search"></i> Cari </button>
+                    <button class="btn btn-info" type="submit"><i class="fa fa-search"></i>  </button>
+                    </div>
                 </div>
                 </form>
                 
-                <table class="table mt-10">
+                <table class="table table-responsive-md mt-10" style="overflow: auto">
                     <thead>
                         <tr class="text-center">
                             <td>No.</td>
@@ -45,10 +48,10 @@
                             <td>Grup </td>
                             <td>Bacaan</td>
                             <td>Tanggal Setor</td>
-                            <td>Status</td>
+                            <td  style="min-width">Status</td>
                             
                             @if (Auth::user()->user_type == 1)
-                                <td>Action</td>
+                                <td  style="min-width:13%">Action</td>
                             @endif
                         </tr>
                     </thead>
@@ -79,11 +82,13 @@
                                 <p class="badge badge-pill {{ $status }}">{{ $item->status }}</p>
                             </td>
                             @if (Auth::user()->user_type == 1)
-                            <td>
-                                <button class="btn btn-success" onclick="updateStatus({{ $item->id }}, 'Approved')"><i
+                            <td >
+                                        <button class="btn btn-success" onclick="updateStatus({{ $item->id }}, 'Approved')"><i
                                         class="fa fa-check "></i></button>
-                                <button class="btn btn-danger" onclick="updateStatus({{ $item->id }}, 'Rejected')"><i
-                                        class="fa fa-close "></i></button>
+                                        <button class="btn btn-danger" onclick="updateStatus({{ $item->id }}, 'Rejected')"><i
+                                            class="fa fa-close "></i></button>
+                                
+                                </div>
                             </td>
                             @endif
                         </tr>
@@ -176,10 +181,10 @@
                 // alert('Data successfull saved');
             },
             error: function (error) {
-                console.log(error)
-                // alert('Data not saved');
-                location.reload();
+                console.log(error);
+location.reload();
             }
+            
         });
     }
 

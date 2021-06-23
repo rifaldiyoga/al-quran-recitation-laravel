@@ -1,12 +1,12 @@
 <?php
-namespace App\Helper;
+namespace App\Helpers;
 
 use App\GroupMember;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
 
-class Helper
+class Helpers
 {
 
     const NGAJI_BARENG = 2;

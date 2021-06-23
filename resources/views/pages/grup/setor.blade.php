@@ -31,7 +31,7 @@
                             id="mentor_id">
                             <option value=""></option>
                             @foreach ($mentorList as $item)
-                            <option value="{{ $item->id }}">{{ Helper::getTitle($item->gender) ." ".$item->first_name}}
+                            <option value="{{ $item->id }}">{{ Helpers::getTitle($item->gender) ." ".$item->first_name}}
                             </option>
                             @endforeach
                         </select>

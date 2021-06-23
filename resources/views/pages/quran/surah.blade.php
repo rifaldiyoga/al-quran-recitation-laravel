@@ -12,7 +12,7 @@
             @auth
             <div class="last-read">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-8">
                         <h3>Quran Completion</h3>
                         <h6 class="mt-10">
                             {{ empty($lastRead) ? "Start Your Read" :  "Last Read ". $lastRead->surah." ".$lastRead->ayat }}
@@ -25,16 +25,21 @@
                                 ?>
                             <div class="w3-white w3-round-xlarge " style="height:24px;width:{{ $new_width }}%"></div>
                         </div>
+                        @else
+                        <div class="w3-light-gray w3-round-xlarge mt-15">
+                            
+                            <div class="w3-white w3-round-xlarge " style="height:24px;width:100%"></div>
+                        </div>
                         @endif
 
                     </div>
-                    <div class="col-md-1">
-                        <div class="last-read-btn mb-10" style="bottom: 0px; position: absolute;">
+                    <div class="col-1">
+                        <div class="last-read-btn mb-10" style="bottom: -5px; position: absolute;">
                             <a href="{{ route('surah.detail', empty($lastRead) ? '1' : $lastRead->surah_id) }}">Lanjutkan
                                 ></a>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <img class="quran-img" src="{{ url('frontend/images/quran.png') }}" class="">
                     </div>
                 </div>
@@ -58,18 +63,18 @@
                 @foreach ($items as $data)
                 <div class="col-lg-4">
                     <div class="single-surah" onclick="location.href='{{ route('surah.detail', $data['number']) }}'"
-                        style="cursor: pointer">
+                        style="cursor: pointer; min-height: 100px">
                         <div class="row">
-                            <div class="col-md-2 my-auto">
-                                <p class="ayat-quran" style="font-size: 30px">{{ Helper::arabic_w2e($data['number']) }}</p>
+                            <div class="col-2 my-auto">
+                                <p class="ayat-quran" style="font-size: 30px">{{ Helpers::arabic_w2e($data['number']) }}</p>
                             </div>
-                            <div class="col-md-7 my-auto">
+                            <div class="col-7 my-auto">
                                 <h6 class="holder-name"><a
                                         href="{{ route('surah.detail', $data['number']) }}">{{ $data['name']['transliteration']['id']}}</a>
                                 </h6>
                                 <p class="w-100" style="font-size: 15px">{{ $data['name']['translation']['id']}}</p>
                             </div>
-                            <div class="col-md-3 my-auto">
+                            <div class="col-3 my-auto">
                                 <p class="ayat-quran surah-title text-right">{{  $data['name']['short'] }}</p>
                             </div>
                         </div>

@@ -10,7 +10,7 @@
             @auth
             <div class="last-read">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-8">
                         <h3>Quran Completion</h3>
                         <h6 class="mt-10">
                             {{ empty($lastRead) ? "Start Your Read" :  "Last Read ". $lastRead->surah." ".$lastRead->ayat }}
@@ -23,19 +23,23 @@
                                 ?>
                             <div class="w3-white w3-round-xlarge " style="height:24px;width:{{ $new_width }}%"></div>
                         </div>
+                        @else
+                        <div class="w3-light-gray w3-round-xlarge mt-15">
+                            
+                            <div class="w3-white w3-round-xlarge " style="height:24px;width:100%"></div>
+                        </div>
                         @endif
                     </div>
-                    <div class="col-md-1">
-                        <div class="last-read-btn mb-10" style="bottom: 0px; position: absolute;">
+                    <div class="col-1">
+                        <div class="last-read-btn mb-10" style="bottom: -5px; position: absolute;">
                             <a href="{{ route('surah.detail', empty($lastRead) ? '1' : $lastRead->surah_id) }}">Lanjutkan
                                 ></a>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <img class="quran-img" src="{{ url('frontend/images/quran.png') }}" class="">
                     </div>
                 </div>
-
             </div>
             @endauth
             <div class="row">
@@ -48,9 +52,9 @@
                         ?>
                         <div class="row d-flex">
                             @foreach ($sholat as $item)
-                            <div class="col-md-2 text-center {{ $loop->last ? '' : 'border-right' }}">
-                                <b> {{ ucfirst($item) }} </b>
-                                <p> {{ $jadwalSholat['results']['datetime'][0]['times'][$item] }} </p>
+                            <div class="col-2 text-center {{ $loop->last ? '' : 'border-right' }}">
+                                <b  style="font-size: 15px"> {{ ucfirst($item) }} </b>
+                                <p class="mt-2"> {{ $jadwalSholat['results']['datetime'][0]['times'][$item] }} </p>
                             </div>
                             @endforeach
                         </div>
@@ -58,8 +62,8 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-8">
+            <div class="row flex-column-reverse flex-lg-row">
+                <div class="col-md-12 col-lg-6 col-xl-8">
                     <h5>Aktivitas Terkini</h5>
                     @if (!$recentActivity->isEmpty())
                     @foreach ($recentActivity as $item)
@@ -69,7 +73,7 @@
                                 style="height:50px;">
 
                             <div class="ml-3 col">
-                                <p class="title">{{ Helper::getName($item->created_by) }} pada {{ $item->group_name }}
+                                <p class="title">{{ Helpers::getName($item->created_by) }} pada {{ $item->group_name }}
                                 </p>
                                 <p class="subtitle">{{ $item->created_at->diffForHumans() }}</p>
                             </div>
@@ -95,7 +99,7 @@
                     </div>
                     @endif
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-12 col-lg-6 col-xl-4" >
                     <div class="single-ayat">
                         <div class="row">
                             <div class="col">

@@ -70,8 +70,8 @@
     
                                     </div>
                                     <div class="grup-content">
-                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ Helper::limitChar($item->group_name, 20)  }}</a></h5>
-                                        <p class="text">{{ Helper::countMember($item->id) }} Anggota</p>
+                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ Helpers::limitChar($item->group_name, 20)  }}</a></h5>
+                                        <p class="text">{{ Helpers::countMember($item->id) }} Anggota</p>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                         <h3>Grup Terbaru</h3>
                         <div class="row" data-wow-duration="1s" data-wow-delay="0.8s">
                             @foreach ($grupTerbaru as $item)
-                            <div class="col-3" onclick="location.href='{{ route('grup.detail', $item->slug) }}'">
+                            <div class="col-md-3" onclick="location.href='{{ route('grup.detail', $item->slug) }}'">
                                 <div class="single-grup text-center mt-30 wow fadeIn" data-wow-duration="1s"
                                     data-wow-delay="0.2s"
                                     style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
@@ -97,8 +97,8 @@
     
                                     </div>
                                     <div class="grup-content">
-                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ Helper::limitChar($item->group_name, 16) }}</a></h5>
-                                        <p class="text">{{ Helper::countMember($item->id) }} Anggota</p>
+                                        <h5 class="holder-name"><a href="{{ route('grup.detail', $item->slug) }}">{{ Helpers::limitChar($item->group_name, 16) }}</a></h5>
+                                        <p class="text">{{ Helpers::countMember($item->id) }} Anggota</p>
                                     </div>
                                 </div>
                             </div>

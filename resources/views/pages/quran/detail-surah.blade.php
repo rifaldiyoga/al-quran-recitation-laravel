@@ -56,7 +56,7 @@
                                             style="color:#aeaeaa; cursor: pointer;"></a>
                                         <p class=" ayat text-right float-right ayat-quran mt-20"
                                             style="text-align: right; font-size : 30px">
-                                            {{ $data['text']['arab']." - ".Helper::arabic_w2e($data['number']['inSurah']) }}
+                                            {{ $data['text']['arab']." - ".Helpers::arabic_w2e($data['number']['inSurah']) }}
                                         </p>
                                     </div>
                                     <div class="col-md-12 mt-15">
