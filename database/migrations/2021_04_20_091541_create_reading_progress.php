@@ -15,11 +15,12 @@ class CreateReadingProgress extends Migration
     {
         Schema::create('reading_progress', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('last_surah');
-            $table->integer('last_ayah');
+            $table->string('surah');
+            $table->integer('surah_id');
+            $table->integer('ayat');
             $table->string('ref_type'); //input grup atau user
             $table->integer('ref_id'); // id user atau grup
-            $table->integer('group_id');// diisi jika reftype = grup untuk refrensi ke grup mana
+            $table->integer('group_id')->default(0);// diisi jika reftype = grup untuk refrensi ke grup mana
             $table->timestamps();
         });
     }

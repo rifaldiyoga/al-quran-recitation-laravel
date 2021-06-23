@@ -19,6 +19,7 @@ class CreateDetailGroupNgajisTable extends Migration
             $table->integer('user_id');
             $table->date('joined_at');
             $table->string('role_type');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
